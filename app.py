@@ -1,6 +1,7 @@
 from flask import Flask
 
-app = Flask(__name__,)
+app = Flask("app")
+#app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
@@ -27,6 +28,11 @@ def float(num):
 def str(name):
     return f'名字是: {name}'
     #return '名字是:{}'.format(name)
+
+#不用装饰器，用add_url_role写法
+def url():
+    return "欢迎使用add_url_role方式!"
+app.add_url_rule('/add_url_role','url',url)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0",port=8800,debug=True)
